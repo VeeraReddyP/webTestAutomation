@@ -1,6 +1,5 @@
 package utils;
 
-import data.TestData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,16 +10,14 @@ import org.testng.TestException;
 
 import javax.validation.constraints.NotNull;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 
 public class ElementActions {
 
+    static LoggerFactory logger = new LoggerFactory(ElementActions.class);
     public RemoteWebDriver driver;
     public WebDriverWait wait;
-
-    static LoggerFactory logger = new LoggerFactory(ElementActions.class);
 
     public ElementActions(RemoteWebDriver driver) {
         this.driver = driver;
@@ -47,7 +44,6 @@ public class ElementActions {
     public void enterData(@NotNull final By locator, @NotNull String text) {
         try {
             logger.info("enter text into the locator " + locator.toString());
-            //waitForElementToBeClickable(locator);
             driver.findElement(locator).clear();
             driver.findElement(locator).sendKeys(text);
         } catch (Exception e) {
@@ -56,13 +52,14 @@ public class ElementActions {
 
     }
 
-    public void waitFor(){
+    public void waitFor() {
         try {
             Thread.sleep(10000);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
+
     public void click(@NotNull By selector) {
         WebElement element = getElement(selector);
         waitForElementToBeClickable(selector);
@@ -113,7 +110,7 @@ public class ElementActions {
         return null;
     }
 
-    public boolean waitForElemenWithFluent(@NotNull By selector,int timeOut,int pollTime) {
+    public boolean waitForElemenWithFluent(@NotNull By selector, int timeOut, int pollTime) {
         try {
             FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver);
             wait.withTimeout(Duration.ofSeconds(timeOut));
@@ -142,7 +139,7 @@ public class ElementActions {
 
     }
 
-    public boolean waitForElemenToBeClickWithFluent(@NotNull By selector,int timeOut,int pollTime) {
+    public boolean waitForElemenToBeClickWithFluent(@NotNull By selector, int timeOut, int pollTime) {
         try {
             FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver);
             wait.withTimeout(Duration.ofSeconds(timeOut));
@@ -169,31 +166,5 @@ public class ElementActions {
             logger.error(e.getMessage());
         }
         return false;
-    }
-
-    public void switchToFrame(@NotNull String frameNameOrId) {
-        if (frameNameOrId == null || frameNameOrId == "")
-            throw new TestException("Frame id is null or blank " + frameNameOrId);
-        try {
-            driver.switchTo().frame(frameNameOrId);
-        } catch (Exception e) {
-            throw new TestException(String.format("Error in frame switching with this frame id: " + frameNameOrId));
-        }
-    }
-
-    public void switchToFrame(@NotNull int frameIndex) {
-        try {
-            driver.switchTo().frame(frameIndex);
-        } catch (Exception e) {
-            throw new TestException(String.format("Error in frame switching with this frame index: " + frameIndex));
-        }
-    }
-
-    public void switchToDefault() {
-        try {
-            driver.switchTo().defaultContent();
-        } catch (Exception e) {
-            throw new TestException(String.format("Error in switching to default " ));
-        }
     }
 }
