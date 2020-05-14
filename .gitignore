@@ -18,3 +18,7 @@ gradlew
 
 # report #
 *.html
+
+#folders#
+screenShots
+testReport
