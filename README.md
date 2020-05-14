@@ -39,3 +39,6 @@
 ## page factory
 
 Implemented page factory approach for locators and the path is src/main/pages but never used @FindBy annotation as i want to write seperate class for selenium actions for better logging.
+
+## sorted using streams
+sorted product names in catalog based on their product names and its name length by using Java streams and compartor methods
