@@ -1,0 +1,17 @@
+# Logs #
+*.txt
+
+# compression and zip #
+*.bat
+.DS_Store
+.DS_Store?
+.gradle
+
+
+# editor filess #
+.idea
+
+# build #
+build
+gradle
+gradlew
