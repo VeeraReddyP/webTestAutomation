@@ -3,10 +3,13 @@ package pages;
 import data.TestData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import utils.ElementActions;
 import utils.LoggerFactory;
+
+import java.util.List;
 
 public class SearchPage {
 
@@ -24,6 +27,7 @@ public class SearchPage {
     }
     By catalogVal = By.id("SortBy");
     By cataProduct = By.xpath("//span[@class='visually-hidden' and text()='Another Round Neck Shirt']/parent::a");
+    By allProducts = By.xpath("//div[@class='h4 grid-view-item__title product-card__title']");
 
 
     public SearchPage(RemoteWebDriver driver) {
@@ -62,6 +66,11 @@ public class SearchPage {
     public void clickCatalogInList(){
         elementActions.waitForElemenToBeClickWithFluent(cataProduct, TestData.timeOut, TestData.pollTime);
         elementActions.click(cataProduct);
+    }
+
+    public List<WebElement> listOfProductNames(){
+        elementActions.waitForElemenWithFluent(allProducts, TestData.timeOut, TestData.pollTime);
+        return elementActions.getElements(allProducts);
     }
 
 }

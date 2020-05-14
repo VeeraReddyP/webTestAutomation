@@ -34,5 +34,12 @@
         </classes>
     </test>
 
+    <test name="shopify :-sorted based on names">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="testScenarios.CatalogData"/>
+        </classes>
+    </test>
+
 
 </suite>

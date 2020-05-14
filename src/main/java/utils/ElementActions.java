@@ -10,6 +10,7 @@ import org.testng.TestException;
 
 import javax.validation.constraints.NotNull;
 import java.time.Duration;
+import java.util.List;
 import java.util.function.Function;
 
 
@@ -166,5 +167,9 @@ public class ElementActions {
             logger.error(e.getMessage());
         }
         return false;
+    }
+
+    public List<WebElement> getElements(@NotNull By locator) {
+        return driver.findElements(locator);
     }
 }
