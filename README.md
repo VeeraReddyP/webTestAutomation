@@ -35,3 +35,7 @@
 3)All tests will run in parallel and execute in different browsers like chrome and firefox.
 
 4)Report path : testReport/Test-Automaton-Report.html
+
+## page factory
+
+Implemented page factory approach for locators and the path is src/main/pages but never used @FindBy annotation as i want to write seperate class for selenium actions for better logging.
