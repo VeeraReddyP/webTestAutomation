@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<suite name="E2E automation Test Suite" verbose="1" parallel="tests">
+<suite name="E2E automation Test Suite" verbose="1" parallel="none">
 
     <listeners>
         <listener class-name="init.TestListener"/>
@@ -13,6 +13,7 @@
         </classes>
     </test>
 
+    <!-- 
     <test name="shopify :-increase product quantity Tests">
         <parameter name="browser" value="firefox"/>
         <classes>
@@ -40,6 +41,6 @@
             <class name="testScenarios.CatalogData"/>
         </classes>
     </test>
-
+-->
 
 </suite>
